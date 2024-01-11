@@ -1,16 +1,19 @@
 package com.ndkchatapp.entities;
 
-import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "user")
-public class User extends BaseEntity {
+public class User extends BaseEntity implements UserDetails {
     @Column
-    private String phone_number;
+    private String phoneNumber;
 
     @Column
     private String password;
@@ -30,16 +33,46 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     private List<GroupChat> groupChats = new ArrayList<GroupChat>();
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.phoneNumber;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {
@@ -85,4 +118,5 @@ public class User extends BaseEntity {
     public void setGroupChats(List<GroupChat> groupChats) {
         this.groupChats = groupChats;
     }
+
 }

@@ -1,5 +1,8 @@
 package com.ndkchatapp.dto;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserDTO extends AbstractDTO {
@@ -46,8 +49,13 @@ public class UserDTO extends AbstractDTO {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setBirthday(String birthday) {
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            this.birthday = (Date) dateFormat.parse(birthday);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getGender() {
