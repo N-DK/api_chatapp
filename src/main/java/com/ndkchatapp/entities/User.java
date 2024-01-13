@@ -30,7 +30,7 @@ public class User extends BaseEntity implements UserDetails {
     @Column
     private int gender;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<GroupChat> groupChats = new ArrayList<GroupChat>();
 
     public String getPhoneNumber() {

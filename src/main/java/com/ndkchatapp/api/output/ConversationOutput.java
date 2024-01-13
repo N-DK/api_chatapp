@@ -1,14 +1,16 @@
-package com.ndkchatapp.dto;
+package com.ndkchatapp.api.output;
+
+import com.ndkchatapp.dto.AbstractDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ConversationDTO extends AbstractDTO {
+public class ConversationOutput extends AbstractDTO {
     private String name;
     private String avatar;
     private Date deleteAt;
-    private List<Long> participants = new ArrayList<>();
+    private List<UserOutput> participants = new ArrayList<UserOutput>();
 
     public String getName() {
         return name;
@@ -34,11 +36,11 @@ public class ConversationDTO extends AbstractDTO {
         this.deleteAt = deleteAt;
     }
 
-    public List<Long> getParticipants() {
+    public List<UserOutput> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<Long> participants) {
+    public void setParticipants(List<UserOutput> participants) {
         this.participants = participants;
     }
 }

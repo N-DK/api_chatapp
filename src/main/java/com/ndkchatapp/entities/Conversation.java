@@ -19,7 +19,7 @@ public class Conversation extends BaseEntity {
     @Column(name = "delete_at")
     private Date deleteAt;
 
-    @OneToMany(mappedBy = "conversation")
+    @OneToMany(mappedBy = "conversation", cascade = CascadeType.ALL)
     private List<GroupChat> groupChats = new ArrayList<GroupChat>();
 
     @OneToMany(mappedBy = "conversation")
