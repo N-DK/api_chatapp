@@ -2,6 +2,7 @@ package com.ndkchatapp.entities;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,7 +14,7 @@ public class Message extends BaseEntity {
 
 
     @OneToMany(mappedBy = "message")
-    private List<Content> contents;
+    private List<Content> contents = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "conversation_id")

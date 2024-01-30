@@ -1,5 +1,6 @@
 package com.ndkchatapp.service.impl;
 
+import com.ndkchatapp.api.output.ConversationOutput;
 import com.ndkchatapp.converter.ConversationConverter;
 import com.ndkchatapp.dto.ConversationDTO;
 import com.ndkchatapp.entities.Conversation;
@@ -34,5 +35,11 @@ public class ConversationService implements IConversationService {
         }
         conversationRepository.save(conversation);
         return ResponseEntity.ok(conversationConverter.toOutput(conversation));
+    }
+
+    @Override
+    public ConversationOutput findOneById(Long id) {
+        Conversation conversation = conversationRepository.findOneById(id);
+        return conversationConverter.toOutput(conversation);
     }
 }

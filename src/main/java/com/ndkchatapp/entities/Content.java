@@ -1,6 +1,7 @@
 package com.ndkchatapp.entities;
 
 import com.ndkchatapp.dto.MessageDTO;
+
 import javax.persistence.*;
 
 import java.util.Date;
@@ -38,7 +39,7 @@ public class Content extends BaseEntity {
     @Column(name = "delete_at")
     private Date deleteAt;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "message_id")
     private Message message;
 

@@ -8,7 +8,7 @@ public class MessageDTO extends AbstractDTO {
     private Long conversation_id;
     private List<ContentDTO> contents = new ArrayList<ContentDTO>();
 
-    public Long getSender_id() {
+    public Long getSender_id(Long senderId) {
         return sender_id;
     }
 

@@ -14,8 +14,7 @@ public class GroupAPI {
 
     @Autowired
     private IGroupService groupService;
-
-    //    Dua vao host xac dinh user va con lai la member
+    
     @GetMapping("/api/group_chat/{userId}")
     public List<ConversationOutput> findGroupByUserId(@PathVariable("userId") Long userId) {
         return groupService.findConversationsByUserId(userId);

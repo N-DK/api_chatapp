@@ -72,6 +72,11 @@ public class UserAPI {
         return ResponseEntity.ok(userOutput);
     }
 
+    @GetMapping("/api/user/{phone_number}")
+    public UserOutput findOneByPhoneNumber(@PathVariable("phone_number") String phoneNumber) {
+        return userService.findOneByPhoneNumber(phoneNumber);
+    }
+
     private ResponseEntity<?> createToken(String username) throws InvalidKeySpecException, NoSuchAlgorithmException {
         String jwtToken = jwtTokenHelper.generateToken(username);
         UserTokenOutput response = new UserTokenOutput();
